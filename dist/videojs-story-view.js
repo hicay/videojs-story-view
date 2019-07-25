@@ -1,4 +1,4 @@
-/*! @name @story-view/videojs-story-view @version 0.0.0 @license MIT */
+/*! @name videojs-story-view @version 0.0.1 @license MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
@@ -7,7 +7,7 @@
 
   videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
 
-  var version = "0.0.0";
+  var version = "0.0.1";
 
   var defaults = {}; // Cross-compatibility for Video.js 5 and 6.
 

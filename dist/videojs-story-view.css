@@ -1,2 +1,2 @@
-/*! @name @story-view/videojs-story-view @version 0.0.0 @license MIT */
+/*! @name videojs-story-view @version 0.0.1 @license MIT */
 .vjs-s-container{width:100%;position:absolute;top:0;left:0;right:0;height:3em}.vjs-s-base,.vjs-s-duration{height:.5em;border-radius:1em}.vjs-s-base{margin:1em;background-color:rgba(115,133,159,.5)}.vjs-s-duration{transition:width 2s;width:0;background-color:#fff}.video-js.vjs-story-view{display:block}.video-js.vjs-story-view .remove-me,.video-js.vjs-story-view .remove-me-too,.video-js.vjs-story-view.finally-remove-me{color:red;font-size:504px}

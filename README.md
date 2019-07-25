@@ -1,11 +1,25 @@
 # videojs-story-view
 
-VideoJs Story View
+VideoJs Story View like Instagram
+
+![alt text](https://raw.githubusercontent.com/hicay/videojs-story-view/master/static/demo1.png)
 
 ## Installation
 
 ```sh
-npm install --save @story-view/videojs-story-view
+npm install --save videojs-story-view
+```
+
+CDN
+
+```html
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/gh/hicay/videojs-story-view@0.0.1/dist/videojs-story-view.css"
+/>
+<script src="//path/to/video@7.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/hicay/videojs-story-view@0.0.1/dist/videojs-story-view.min.js"></script>
 ```
 
 ## Usage
@@ -15,18 +29,6 @@ To include videojs-story-view on your website or web application, use any of the
 ### `<script>` Tag
 
 This is the simplest case. Get the script in whatever way you prefer and include the plugin _after_ you include [video.js][videojs], so that the `videojs` global is available.
-
-CDN
-
-```html
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://cdn.jsdelivr.net/gh/hicay/videojs-story-view@0.1/dist/videojs-story-view.css"
-/>
-<script src="//path/to/video@7.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/hicay/videojs-story-view@0.1/dist/videojs-story-view.min.js"></script>
-```
 
 LOCAL
 

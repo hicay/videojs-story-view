@@ -1,11 +1,11 @@
-/*! @name @story-view/videojs-story-view @version 0.0.0 @license MIT */
+/*! @name videojs-story-view @version 0.0.1 @license MIT */
 'use strict';
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var videojs = _interopDefault(require('video.js'));
 
-var version = "0.0.0";
+var version = "0.0.1";
 
 var defaults = {}; // Cross-compatibility for Video.js 5 and 6.
 
