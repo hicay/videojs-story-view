@@ -19,6 +19,11 @@ This is the simplest case. Get the script in whatever way you prefer and include
 CDN
 
 ```html
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/gh/hicay/videojs-story-view@0.1/dist/videojs-story-view.css"
+/>
 <script src="//path/to/video@7.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/hicay/videojs-story-view@0.1/dist/videojs-story-view.min.js"></script>
 ```
@@ -26,6 +31,11 @@ CDN
 LOCAL
 
 ```html
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//path/to/videojs-story-view.css"
+/>
 <script src="//path/to/video.min.js"></script>
 <script src="//path/to/videojs-story-view.min.js"></script>
 <script>
