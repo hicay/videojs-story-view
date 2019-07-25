@@ -1,0 +1,69 @@
+/**
+ * css for videojs-story-view
+ * With the default plugins for postcss you can
+ * - @import files, they will be inlined during build
+ * - not worry about browser prefixes, they will be handled
+ * - nest selectors. This follows the css specification that is
+ *   currently out on some browsers. See https://tabatkins.github.io/specs/css-nesting/
+ * - custom properties (aka variables) via the var(--var-name) syntax. See
+ *   https://www.w3.org/TR/css-variables-1/
+ */
+
+
+/* Note: all vars must be defined here, there are no "local" vars */
+:root {
+  --main-color: red;
+  --base-font-size: 9;
+  --font-size: 7;
+}
+
+.vjs-s-container {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.0em;
+}
+
+.vjs-s-base {
+  /* #c1c1c177; */
+  margin: 1em;
+  height: 0.5em;
+  border-radius: 1em;
+  background-color: rgba(115, 133, 159, 0.5);
+}
+
+.vjs-s-duration {
+  -webkit-transition: width 2s;
+  /* Safari prior 6.1 */
+  transition: width 2s;
+  width: 0px;
+  height: 0.5em;
+  border-radius: 1em;
+  background-color: #fff;
+}
+
+.video-js {
+
+  &.vjs-story-view {
+    /* This class is added to the video.js element by the plugin by default. */
+    display: block;
+
+    & .remove-me,
+    & .remove-me-too,
+    &.finally-remove-me {
+      /* examples of postcss syntax, you probably want to remove this */
+
+      color: var(--main-color);
+
+      /**
+       * Note that you have to use calc and multiply by a value with a unit
+       * prepending the unit like `var(--base-font-size)px` or
+       * `calc(10 * var(--base-font-size)em` will NOT work!
+       */
+      font-size: calc(var(--font-size) * 8 * var(--base-font-size) * 1px);
+
+    }
+  }
+}
