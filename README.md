@@ -16,6 +16,15 @@ To include videojs-story-view on your website or web application, use any of the
 
 This is the simplest case. Get the script in whatever way you prefer and include the plugin _after_ you include [video.js][videojs], so that the `videojs` global is available.
 
+CDN
+
+```html
+<script src="//path/to/video@7.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/hicay/videojs-story-view@0.1/dist/videojs-story-view.min.js"></script>
+```
+
+LOCAL
+
 ```html
 <script src="//path/to/video.min.js"></script>
 <script src="//path/to/videojs-story-view.min.js"></script>
