@@ -1,6 +1,6 @@
 # videojs-story-view
 
-header
+VideoJs Story View
 
 ## Installation
 
@@ -57,7 +57,6 @@ require(['video.js', '@story-view/videojs-story-view'], function(videojs) {
 
 ## License
 
-MIT. Copyright (c) Salih Caglar Ispirli \PC &lt;caglarispirli@gmail.com&gt;
-
+MIT. Copyright (c) Salih Caglar Ispirli &lt;caglarispirli@gmail.com&gt;
 
 [videojs]: http://videojs.com/
