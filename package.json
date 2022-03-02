@@ -84,7 +84,7 @@
   "devDependencies": {
     "@videojs/generator-helpers": "~1.0.0",
     "in-publish": "^2.0.0",
-    "karma": "^4.0.0",
+    "karma": "^6.3.16",
     "postcss-cli": "^6.0.0",
     "rollup": "^1.10.0",
     "sinon": "^7.2.2",
