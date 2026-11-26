@@ -13,7 +13,12 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "types": ["vite/client", "node"]
+    "types": ["vite/client", "node"],
+    "paths": {
+      "videojs-story-view": ["./src/index.ts"],
+      "videojs-story-view/define": ["./src/define.ts"],
+      "videojs-story-view/videojs": ["./src/videojs.ts"]
+    }
   },
   "include": ["src", "test", "e2e", "demo", "*.config.ts"]
 }
