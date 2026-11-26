@@ -1,0 +1,283 @@
+:root {
+  --bg: #f6f5f3;
+  --fg: #1c1c1e;
+  --muted: #6b6b70;
+  --card: #fff;
+  --line: #e4e2de;
+  --accent: #d62976;
+  color-scheme: light dark;
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111113;
+    --fg: #ececee;
+    --muted: #9c9ca3;
+    --card: #1b1b1e;
+    --line: #2b2b30;
+    --accent: #ff6aa8;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 16px;
+}
+
+a {
+  color: var(--accent);
+}
+
+code,
+kbd,
+pre {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.875em;
+}
+
+kbd {
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 0 4px;
+  background: var(--card);
+}
+
+pre {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 6vw, 2.8rem);
+  line-height: 1.1;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: 0 0 8px;
+}
+
+.intro,
+section {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+  padding: 32px 0;
+}
+
+.intro {
+  padding-top: 24px;
+}
+
+section {
+  border-top: 1px solid var(--line);
+}
+
+.intro {
+  gap: 20px;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.install {
+  margin-bottom: 12px;
+}
+
+.links {
+  display: flex;
+  gap: 16px;
+  margin: 0 0 12px;
+}
+
+.hints {
+  color: var(--muted);
+  padding-inline-start: 1.2em;
+  margin: 0;
+}
+
+.copy p {
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.device {
+  width: min(100%, 360px);
+  margin-inline: auto;
+}
+
+.device.small {
+  width: min(100%, 300px);
+}
+
+.device story-view,
+.device .video-js,
+.v10-surface {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.18);
+}
+
+.device story-view {
+  width: 100%;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.toolbar button {
+  flex: 1;
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 8px 0;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.log {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 8px 0 0;
+  min-height: 1.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-js {
+  width: 100%;
+}
+
+.v10-surface {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #000;
+}
+
+.v10-surface video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.v10-surface story-view {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+}
+
+.themes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.themes figure {
+  margin: 0;
+}
+
+.themes figcaption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.theme-sunset {
+  --story-view-accent: linear-gradient(90deg, #f9ce34, #ee2a7b, #6228d7);
+  --story-view-segment-height: 4px;
+  --story-view-radius: 16px;
+}
+
+.theme-card {
+  --story-view-accent: #ffd60a;
+  --story-view-track: rgb(255 255 255 / 0.2);
+  --story-view-segment-gap: 2px;
+  --story-view-radius: 28px;
+  --story-view-inset: 16px;
+  border: 3px solid var(--fg);
+}
+
+.theme-card::part(title) {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.theme-rtl {
+  --story-view-radius: 16px;
+}
+
+footer {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 24px 0 48px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 800px) {
+  .intro {
+    grid-template-columns: 1fr 360px;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 48px;
+    row-gap: 20px;
+    padding: 64px 0 48px;
+  }
+
+  .intro-head {
+    grid-column: 1;
+    align-self: end;
+  }
+
+  .intro .device {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .intro-more {
+    grid-column: 1;
+    align-self: start;
+  }
+
+  section {
+    grid-template-columns: 300px 1fr;
+    align-items: center;
+    gap: 48px;
+    padding: 48px 0;
+  }
+
+  section#theming {
+    grid-template-columns: 1fr 1fr;
+  }
+}

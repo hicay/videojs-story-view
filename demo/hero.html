@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>videojs-story-view: README picture</title>
+    <!-- Used by scripts/screenshots.mjs for the README pictures. Not part of the site. -->
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f4f3f1;
+        --fg: #1c1c1e;
+        --muted: #6b6b70;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #161618;
+          --fg: #ececee;
+          --muted: #9c9ca3;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      .stage {
+        width: 1200px;
+        height: 720px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+      }
+      figure {
+        margin: 0;
+        text-align: center;
+        color: var(--muted);
+      }
+      story-view {
+        width: 300px;
+        border-radius: 24px;
+        box-shadow: 0 16px 40px rgb(0 0 0 / 0.22);
+      }
+      figure:nth-child(2) story-view {
+        width: 330px;
+      }
+      .theme {
+        --story-view-accent: linear-gradient(90deg, #f9ce34, #ee2a7b, #6228d7);
+        --story-view-segment-height: 4px;
+      }
+      figcaption {
+        margin-top: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <figure>
+        <story-view id="a" autoplay="false" pause-when-offscreen="false"></story-view>
+        <figcaption>Photos with a link</figcaption>
+      </figure>
+      <figure>
+        <story-view id="b" autoplay="false" pause-when-offscreen="false"></story-view>
+        <figcaption>Video, muted until you tap</figcaption>
+      </figure>
+      <figure>
+        <story-view id="c" class="theme" dir="rtl" autoplay="false" pause-when-offscreen="false"></story-view>
+        <figcaption>Themed, right to left</figcaption>
+      </figure>
+    </div>
+    <script type="module">
+      import 'videojs-story-view/define';
+
+      const photo = (id) => `https://picsum.photos/id/${id}/720/1280`;
+      const avatar = (id) => `https://picsum.photos/id/${id}/96/96`;
+      const set = (id, items, index) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.items = items;
+        el.setAttribute('start-index', String(index));
+      };
+      const nature = [1018, 1039, 1044, 1036].map((id) => ({ src: photo(id), avatar: avatar(id) }));
+
+      set('a', nature.map((item, i) => ({
+        ...item,
+        title: 'Andrew Coelho',
+        subtitle: 'Unsplash · 2h',
+        link: i === 1 ? { href: 'https://unsplash.com/', label: 'See the full photo' } : undefined,
+      })), 1);
+      set('b', [
+        { src: 'https://vjs.zencdn.net/v/oceans.mp4', duration: 8, title: 'Video.js', subtitle: 'Oceans', avatar: avatar(64) },
+        { src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4', title: 'Blender Studio', subtitle: 'Sintel trailer', avatar: avatar(1043) },
+        { src: photo(1015) },
+      ], 0);
+      if (location.hash === '#single') {
+        document.querySelector('.stage').innerHTML =
+          '<story-view id="single" pause-when-offscreen="false" style="width:360px;border-radius:0;box-shadow:none"></story-view>';
+        document.querySelector('.stage').style.cssText = 'width:360px;height:640px;display:block';
+        document.getElementById('single').items = [
+          { src: 'https://vjs.zencdn.net/v/oceans.mp4', duration: 4, title: 'Video.js', subtitle: 'Oceans', avatar: avatar(64) },
+          { src: photo(1036), duration: 2.5, title: 'Wolfgang Lutz', subtitle: 'Unsplash', avatar: avatar(1036) },
+          { src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4', duration: 4, title: 'Blender Studio', subtitle: 'Sintel trailer', avatar: avatar(1043), link: { href: 'https://durian.blender.org/', label: 'About Sintel' } },
+          { src: photo(1015), duration: 2.5, title: 'Alexey Topolyanskiy', subtitle: 'Unsplash', avatar: avatar(1015) },
+        ];
+      }
+      set('c', [1080, 1057, 1050, 1067, 1044].map((id) => ({ src: photo(id), title: 'مدونة السفر', subtitle: 'منذ ساعة', avatar: avatar(91) })), 2);
+    </script>
+  </body>
+</html>

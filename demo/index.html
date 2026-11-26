@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>videojs-story-view</title>
+    <meta name="description" content="Instagram-style stories for the web: a small &lt;story-view&gt; custom element and a Video.js 8 plugin." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='8' fill='none' stroke='%23e1306c' stroke-width='4'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <header class="intro">
+      <div class="intro-head">
+        <h1>videojs-story-view</h1>
+        <p class="lead">
+          Instagram-style stories for the web. A small <code>&lt;story-view&gt;</code> custom element
+          with no dependencies, and a plugin for Video.js 8.
+        </p>
+      </div>
+      <div class="device">
+        <story-view id="hero" loop></story-view>
+        <div class="toolbar" role="group" aria-label="Demo controls">
+          <button type="button" data-action="prev">Prev</button>
+          <button type="button" data-action="toggle">Pause</button>
+          <button type="button" data-action="next">Next</button>
+          <button type="button" data-action="mute">Sound on</button>
+        </div>
+        <p class="log" id="log" aria-live="off">Waiting for the first story…</p>
+      </div>
+      <div class="intro-more">
+        <pre class="install"><code>npm install videojs-story-view</code></pre>
+        <p class="links">
+          <a href="https://github.com/hicay/videojs-story-view">GitHub</a>
+          <a href="https://www.npmjs.com/package/videojs-story-view">npm</a>
+          <a href="https://github.com/hicay/videojs-story-view#readme">Docs</a>
+        </p>
+        <ul class="hints">
+          <li>Tap the right side for the next story, the left side to go back.</li>
+          <li>Press and hold to pause. Swipe left or right.</li>
+          <li>With the story focused: <kbd>←</kbd> <kbd>→</kbd>, <kbd>Space</kbd>, <kbd>M</kbd>.</li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section id="html">
+        <div class="device small">
+          <story-view id="declarative" image-duration="4">
+            <img src="https://picsum.photos/id/1018/720/1280" alt="Mountains and a forest by a lake" data-title="Andrew Ridley" data-subtitle="Unsplash" data-avatar="https://picsum.photos/id/1018/96/96">
+            <img src="https://picsum.photos/id/1039/720/1280" alt="A waterfall in a green forest" data-title="Andrew Coelho" data-subtitle="Unsplash" data-avatar="https://picsum.photos/id/1039/96/96">
+            <img src="https://picsum.photos/id/1044/720/1280" alt="Sunlight over a misty valley" data-title="Steve Carter" data-subtitle="Unsplash" data-avatar="https://picsum.photos/id/1044/96/96" data-link="https://unsplash.com/photos/Ixp4YhCKZkI" data-link-label="See on Unsplash">
+          </story-view>
+        </div>
+        <div class="copy">
+          <h2>Just HTML</h2>
+          <p>
+            Put <code>&lt;img&gt;</code> and <code>&lt;video&gt;</code> elements inside
+            <code>&lt;story-view&gt;</code>. Each one becomes a story. <code>data-*</code> attributes set
+            the header, the duration and a link.
+          </p>
+<pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/videojs-story-view@1"&gt;&lt;/script&gt;
+
+&lt;story-view image-duration="4"&gt;
+  &lt;img src="lake.jpg" alt="A lake" data-title="Andrew Ridley"&gt;
+  &lt;video src="clip.mp4" preload="none" data-duration="8"&gt;&lt;/video&gt;
+  &lt;img src="valley.jpg" alt="A valley"
+       data-link="https://example.com" data-link-label="Read more"&gt;
+&lt;/story-view&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="videojs8">
+        <div class="device small">
+          <video id="vjs8" class="video-js" playsinline></video>
+        </div>
+        <div class="copy">
+          <h2>Video.js 8 plugin</h2>
+          <p>
+            <code>player.storyView()</code> plays each video story through your Video.js 8 player, so
+            its tech, HLS and DASH support and plugins all apply. Image stories are drawn on top.
+          </p>
+<pre><code>import videojs from 'video.js';
+import { registerStoryView } from 'videojs-story-view/videojs';
+
+registerStoryView(videojs);
+
+const player = videojs('my-player', { aspectRatio: '9:16' });
+const stories = player.storyView({ items, loop: true });
+stories.on('storychange', ({ index }) =&gt; console.log(index));</code></pre>
+        </div>
+      </section>
+
+      <section id="videojs10">
+        <div class="device small">
+          <video-player>
+            <media-container class="v10-surface">
+              <video id="v10-media" playsinline muted></video>
+              <story-view id="v10" media="v10-media"></story-view>
+            </media-container>
+          </video-player>
+        </div>
+        <div class="copy">
+          <h2>Video.js 10, or any media element</h2>
+          <p>
+            Video.js 10 has no plugin system; you compose elements instead. Put
+            <code>&lt;story-view&gt;</code> inside the player's container and point <code>media</code> at
+            the media element. The story view sets its <code>src</code> and drives playback; the Video.js
+            store sees every change. The same works with a plain <code>&lt;video&gt;</code>.
+          </p>
+<pre><code>&lt;video-player&gt;
+  &lt;media-container&gt;
+    &lt;video id="media" playsinline muted&gt;&lt;/video&gt;
+    &lt;story-view media="media"&gt;…&lt;/story-view&gt;
+  &lt;/media-container&gt;
+&lt;/video-player&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="theming">
+        <div class="themes">
+          <figure>
+            <story-view class="theme-sunset" image-duration="4"></story-view>
+            <figcaption>Gradient bars</figcaption>
+          </figure>
+          <figure>
+            <story-view class="theme-card" image-duration="4"></story-view>
+            <figcaption>Card</figcaption>
+          </figure>
+          <figure>
+            <story-view class="theme-rtl" dir="rtl" image-duration="4"></story-view>
+            <figcaption>Right to left</figcaption>
+          </figure>
+        </div>
+        <div class="copy">
+          <h2>Theming</h2>
+          <p>
+            Change colors and sizes with CSS custom properties, or reach any piece with
+            <code>::part()</code>. Right-to-left pages get mirrored taps, swipes and arrow keys.
+          </p>
+<pre><code>story-view {
+  --story-view-accent: linear-gradient(90deg, #f9ce34, #ee2a7b, #6228d7);
+  --story-view-segment-height: 4px;
+  --story-view-radius: 24px;
+}
+
+story-view::part(title) {
+  font-weight: 700;
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        MIT licensed. Photos from <a href="https://unsplash.com/license">Unsplash</a> via
+        <a href="https://picsum.photos/">Lorem Picsum</a>. Sintel and Big Buck Bunny trailers ©
+        Blender Foundation, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+        Oceans clip from the <a href="https://videojs.org/">Video.js</a> sample media.
+      </p>
+    </footer>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
