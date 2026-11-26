@@ -1,0 +1,26 @@
+/*
+ * Optional. Everything the story view draws lives in a shadow root with its
+ * own styles; this file only helps the surrounding page.
+ */
+
+/* Reserve space and hide child <img>/<video> stories until the element is defined. */
+story-view:not(:defined) {
+  display: block;
+  aspect-ratio: 9 / 16;
+  background: var(--story-view-background, #000);
+}
+
+story-view > * {
+  display: none !important;
+}
+
+/* A Video.js 8 player with the plugin: fill the frame like the element does. */
+.video-js.vjs-story-view .vjs-tech,
+.video-js.vjs-story-view .vjs-poster img {
+  object-fit: var(--story-view-fit, cover);
+}
+
+.video-js.vjs-story-view .vjs-control-bar,
+.video-js.vjs-story-view .vjs-big-play-button {
+  display: none;
+}
